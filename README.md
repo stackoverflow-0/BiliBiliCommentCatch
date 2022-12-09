@@ -1,2 +1,2 @@
 # BiliBiliCommentCatch
-get comments with BV
+Get comments with BV
