@@ -73,7 +73,7 @@ def comment_level_viz(level_list = [] ,main_path = './comment_data/main_data.csv
         
     select_list = [0] * len(d.values())
     for l in level_list:
-        select_list[int(l)] = 0.1
+        select_list[int(l)] = 0.05
     select_list[1] = 0.8
     from collections import OrderedDict
     

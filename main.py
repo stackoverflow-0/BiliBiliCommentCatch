@@ -41,6 +41,7 @@ viz_column = [
                     sg.Button("Viz",key="ok",tooltip=True),
                     # sg.Check(text='<'),
                     # sg.Check(text='='),
+                    
                     # sg.Check(text='>'),
                 ],
                 [sg.Canvas(key="-Comment_Time_Viz-",size = (120,40))],
