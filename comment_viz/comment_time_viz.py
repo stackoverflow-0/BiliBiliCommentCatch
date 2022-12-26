@@ -3,7 +3,7 @@ import pandas as pds
 import matplotlib
 from wordcloud import WordCloud, STOPWORDS
 import jieba
-def comment_time_viz(level_list = ['0','1','2','3','4','5','6'], main_path = './comment_data/main_data.csv',reply_path = './comment_data/reply_data.csv'):
+def comment_time_viz(level_list = ['0','1','2','3','4','5','6'], main_path = './comment_data/default_main_data.csv',reply_path = './comment_data/default_reply_data.csv'):
     
     main_comment = pds.read_csv(main_path)
     reply_comment = pds.read_csv(reply_path)
@@ -55,7 +55,7 @@ def comment_time_viz(level_list = ['0','1','2','3','4','5','6'], main_path = './
     
     return fig
 
-def comment_level_viz(level_list = [] ,main_path = './comment_data/main_data.csv',reply_path = './comment_data/reply_data.csv'):
+def comment_level_viz(level_list = [] ,main_path = './comment_data/default_main_data.csv',reply_path = './comment_data/default_reply_data.csv'):
     
     main_comment = pds.read_csv(main_path)
     reply_comment = pds.read_csv(reply_path)
@@ -86,7 +86,7 @@ def comment_level_viz(level_list = [] ,main_path = './comment_data/main_data.csv
     
     return fig
 
-def word_cloud(main_path = './comment_data/main_data.csv',reply_path = './comment_data/reply_data.csv'):
+def word_cloud(main_path = './comment_data/default_main_data.csv',reply_path = './comment_data/default_reply_data.csv'):
     main_comment = pds.read_csv(main_path)
     reply_comment = pds.read_csv(reply_path)
     content = ''
