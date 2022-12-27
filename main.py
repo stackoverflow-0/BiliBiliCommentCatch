@@ -69,13 +69,13 @@ word_cloud_fig = word_cloud()
 word_cloud_fig_agg = draw_figure(window["-Word_Cloud_Viz-"].TKCanvas, word_cloud_fig)
 
 is_pulling = False
-
+bv = 'BV1sP411g7PZ'
 while True:
     event, values = window.read()
     
     if event == "-Get-" :
         window['-Pull_Status-'].update('getting comments ...')
-        window.perform_long_operation(lambda:pull(bv), "-PULL_COMPLETED-")
+        window.perform_long_operation(lambda:pull(window,bv), "-PULL_COMPLETED-")
         is_pulling = True
         
     
@@ -98,7 +98,6 @@ while True:
         if event == "-LEVEL-" :
             if values["-LEVEL-"] != '':
                 level_list = values["-LEVEL-"].split(',')
-                print(level_list)
         if event == "-BV-":
             bv = values["-BV-"]        
         if event == "-Viz-":

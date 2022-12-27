@@ -40,7 +40,7 @@ def bv2av(bv:str)->str:
     return av
 
 
-def pull(bv = 'BV1Dh41167W4') :
+def pull(window,bv = 'BV1Dh41167W4') :
     # !rm ./comment_data/*.csv
     if os.path.exists(f'./comment_data/main_data.csv') :
         os.remove(f'./comment_data/main_data.csv')
@@ -52,6 +52,7 @@ def pull(bv = 'BV1Dh41167W4') :
     # bv = video_url.split('/')[-1]
     oid = bv2av(bv)
     # dot_cnt = 0
+    cnt = 0
     for i in range(30000):
         url = "https://api.bilibili.com/x/v2/reply/main?jsonp=jsonp&next={}&type=1&oid={}&mode=3&plat=1".format(str(i),oid)
         print(url)
@@ -61,7 +62,8 @@ def pull(bv = 'BV1Dh41167W4') :
         if not data['data']['replies']:
             break
         m_data = get_data(data)
-        
+        cnt+=1
+        window['-Pull_Status-'].update(f'getting comments page {cnt}')
         save_data("main", m_data)
         for j in m_data:
             reply_url = "https://api.bilibili.com/x/v2/reply/reply?jsonp=jsonp&pn=1&type=1&oid={}&ps=10&root={}".format(oid,str(j[0]))
@@ -71,6 +73,8 @@ def pull(bv = 'BV1Dh41167W4') :
             if not r_data['data']['replies']:
                 break
             reply_data = get_data(r_data)
+            cnt+=1
+            window['-Pull_Status-'].update(f'getting comments page {cnt}')
             save_data("reply", reply_data)
             # break
             
