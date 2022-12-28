@@ -3,7 +3,7 @@ import pandas as pds
 import matplotlib
 from wordcloud import WordCloud, STOPWORDS
 import jieba
-def comment_time_viz(level_list = ['0','1','2','3','4','5','6'], main_path = './comment_data/default_main_data.csv',reply_path = './comment_data/default_reply_data.csv'):
+def comment_time_viz(level_list = ['0','1','2','3','4','5','6'], main_path = './comment_data/BV1sP411g7PZ_main_data.csv',reply_path = './comment_data/BV1sP411g7PZ_reply_data.csv'):
     
     main_comment = pds.read_csv(main_path)
     reply_comment = pds.read_csv(reply_path)
@@ -51,11 +51,11 @@ def comment_time_viz(level_list = ['0','1','2','3','4','5','6'], main_path = './
     d = OrderedDict(sorted(d.items()))
     
     fig = matplotlib.figure.Figure(figsize=(15, 5), dpi=75)
-    fig.add_subplot(111).plot(d.keys(),d.values())
+    fig.add_subplot(111).plot(d.keys(),d.values(),marker='|')
     
     return fig
 
-def comment_level_viz(level_list = [] ,main_path = './comment_data/default_main_data.csv',reply_path = './comment_data/default_reply_data.csv'):
+def comment_level_viz(level_list = [] ,main_path = './comment_data/BV1sP411g7PZ_main_data.csv',reply_path = './comment_data/BV1sP411g7PZ_reply_data.csv'):
     
     main_comment = pds.read_csv(main_path)
     reply_comment = pds.read_csv(reply_path)
@@ -86,7 +86,7 @@ def comment_level_viz(level_list = [] ,main_path = './comment_data/default_main_
     
     return fig
 
-def word_cloud(main_path = './comment_data/default_main_data.csv',reply_path = './comment_data/default_reply_data.csv'):
+def word_cloud(main_path = './comment_data/BV1sP411g7PZ_main_data.csv',reply_path = './comment_data/BV1sP411g7PZ_reply_data.csv'):
     main_comment = pds.read_csv(main_path)
     reply_comment = pds.read_csv(reply_path)
     content = ''

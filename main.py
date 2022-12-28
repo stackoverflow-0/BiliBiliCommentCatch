@@ -82,13 +82,13 @@ while True:
     if event == "-PULL_COMPLETED-" :
         window['-Pull_Status-'].update('BV:')
         delete_fig_agg(time_fig_agg)
-        time_fig = comment_time_viz(level_list=level_list,main_path='./comment_data/main_data.csv',reply_path='./comment_data/reply_data.csv')
+        time_fig = comment_time_viz(level_list=level_list,main_path=f'./comment_data/{bv}_main_data.csv',reply_path=f'./comment_data/{bv}_reply_data.csv')
         time_fig_agg = draw_figure(window["-Comment_Time_Viz-"].TKCanvas, time_fig)
         delete_fig_agg(level_fig_agg)
-        level_fig = comment_level_viz(level_list=level_list,main_path='./comment_data/main_data.csv',reply_path='./comment_data/reply_data.csv')
+        level_fig = comment_level_viz(level_list=level_list,main_path=f'./comment_data/{bv}_main_data.csv',reply_path=f'./comment_data/{bv}_reply_data.csv')
         level_fig_agg = draw_figure(window["-Comment_Level_Viz-"].TKCanvas, level_fig)
         delete_fig_agg(word_cloud_fig_agg)
-        word_cloud_fig = word_cloud(main_path='./comment_data/main_data.csv',reply_path='./comment_data/reply_data.csv')
+        word_cloud_fig = word_cloud(main_path=f'./comment_data/{bv}_main_data.csv',reply_path=f'./comment_data/{bv}_reply_data.csv')
         word_cloud_fig_agg = draw_figure(window["-Word_Cloud_Viz-"].TKCanvas, word_cloud_fig)
         is_pulling = False
     if event == sg.WIN_CLOSED :
@@ -102,10 +102,10 @@ while True:
             bv = values["-BV-"]        
         if event == "-Viz-":
             delete_fig_agg(time_fig_agg)
-            time_fig = comment_time_viz(level_list=level_list,main_path='./comment_data/main_data.csv',reply_path='./comment_data/reply_data.csv')
+            time_fig = comment_time_viz(level_list=level_list,main_path=f'./comment_data/{bv}_main_data.csv',reply_path=f'./comment_data/{bv}_reply_data.csv')
             time_fig_agg = draw_figure(window["-Comment_Time_Viz-"].TKCanvas, time_fig)
             delete_fig_agg(level_fig_agg)
-            level_fig = comment_level_viz(level_list=level_list,main_path='./comment_data/main_data.csv',reply_path='./comment_data/reply_data.csv')
+            level_fig = comment_level_viz(level_list=level_list,main_path=f'./comment_data/{bv}_main_data.csv',reply_path=f'./comment_data/{bv}_reply_data.csv')
             level_fig_agg = draw_figure(window["-Comment_Level_Viz-"].TKCanvas, level_fig)
         
     
