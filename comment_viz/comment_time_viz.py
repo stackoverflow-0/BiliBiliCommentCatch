@@ -52,6 +52,9 @@ def comment_time_viz(level_list = ['0','1','2','3','4','5','6'], main_path = './
     
     fig = matplotlib.figure.Figure(figsize=(15, 5), dpi=75)
     fig.add_subplot(111).plot(d.keys(),d.values(),marker='|')
+    fig.axes[0].set_title('Comment rate')
+    fig.axes[0].set_xlabel("Date")
+    fig.axes[0].set_ylabel("comment count")
     
     return fig
 

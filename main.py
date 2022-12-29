@@ -8,6 +8,7 @@ import matplotlib
 
 from comment_viz.comment_time_viz import *
 from comment_viz.comment_pull import *
+from comment_viz.comment_sentiment import *
 
 # fig = matplotlib.figure.Figure(figsize=(20, 4), dpi=50)
 # ax = fig.add_subplot(111)
@@ -50,6 +51,7 @@ viz_column = [
                 ],
                 [sg.Canvas(key="-Comment_Time_Viz-",size = (120,40))],
                 [sg.Canvas(key="-Comment_Level_Viz-",size = (40,40)),sg.Canvas(key="-Word_Cloud_Viz-",size = (60,40))],
+                [sg.Canvas(key="-Comment_senti_Viz-",size = (120,40))]
             ]
 
 
@@ -70,6 +72,8 @@ word_cloud_fig_agg = draw_figure(window["-Word_Cloud_Viz-"].TKCanvas, word_cloud
 
 is_pulling = False
 bv = 'BV1sP411g7PZ'
+senti_fig = comment_senti()
+senti_fig_agg = draw_figure(window["-Comment_senti_Viz-"].TKCanvas, senti_fig)
 while True:
     event, values = window.read()
     
@@ -90,6 +94,9 @@ while True:
         delete_fig_agg(word_cloud_fig_agg)
         word_cloud_fig = word_cloud(main_path=f'./comment_data/{bv}_main_data.csv',reply_path=f'./comment_data/{bv}_reply_data.csv')
         word_cloud_fig_agg = draw_figure(window["-Word_Cloud_Viz-"].TKCanvas, word_cloud_fig)
+        delete_fig_agg(senti_fig_agg)
+        senti_fig = comment_senti(main_path=f'./comment_data/{bv}_main_data.csv',reply_path=f'./comment_data/{bv}_reply_data.csv')
+        senti_fig_agg = draw_figure(window["-Comment_senti_Viz-"].TKCanvas, senti_fig)
         is_pulling = False
     if event == sg.WIN_CLOSED :
         break    
